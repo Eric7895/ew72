@@ -1,0 +1,65 @@
+# Build and deploy the Vite website to GitHub Pages.
+name: Deploy portfolio to GitHub Pages
+
+on:
+  # Deploy whenever code is pushed to the main branch.
+  push:
+    branches:
+      - main
+
+  # Allow manual deployment from the GitHub Actions page.
+  workflow_dispatch:
+
+# Required permissions for GitHub Pages deployment.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Prevent multiple deployments from running simultaneously.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Download the repository code.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Install Node.js.
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      # Install the exact dependencies from package-lock.json.
+      - name: Install dependencies
+        run: npm ci
+
+      # Build the Vite application into the dist folder.
+      - name: Build website
+        run: npm run build
+
+      # Configure the GitHub Pages environment.
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # Upload the generated dist folder.
+      - name: Upload website files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      # Publish the uploaded files.
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4
