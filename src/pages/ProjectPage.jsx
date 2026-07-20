@@ -20,7 +20,7 @@ function ProjectPage() {
       <header className="site-header">
         <nav className="navigation" aria-label="Project navigation">
           <Link className="site-logo" to="/">
-            Your Name
+            EW
           </Link>
 
           <Link to="/">Back to homepage</Link>
@@ -91,7 +91,32 @@ function ProjectPage() {
           <section className="project-overview-section">
             <p className="section-label">Overview</p>
             <h2>About this project</h2>
-            <p>{project.overview}</p>
+            <p>{project.overview.split('\n').map((line, index) => (
+                <span key={index}>
+                  {line}
+                  <br />
+                </span>))}</p>
+          </section>
+        )}
+
+        {/* Display additional project screenshots when available. */}
+        {project.screenshots?.length > 0 && (
+          <section className="project-screenshots-section">
+            <p className="section-label">Application preview</p>
+            <h2>Explore the application</h2>
+
+            <div className="project-screenshot-list">
+              {project.screenshots.map((screenshot) => (
+                <figure className="project-screenshot" key={screenshot.id}>
+                  <img src={screenshot.image} alt={screenshot.alt} />
+
+                  <figcaption>
+                    <h3>{screenshot.title}</h3>
+                    <p>{screenshot.caption}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </section>
         )}
 
