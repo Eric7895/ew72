@@ -111,19 +111,17 @@ function HomePage() {
           </div>
 
           <p>
-            Add a short message inviting employers, collaborators, or other
-            visitors to contact you.
+            Feel free to contact me on GitHub, or LinkedIn.
           </p>
 
           <div className="contact-links">
-            <a href="mailto:your-email@example.com">Email</a>
 
-            <a href="https://github.com/" target="_blank" rel="noreferrer">
+            <a href="https://github.com/Eric7895" target="_blank" rel="noreferrer">
               GitHub
             </a>
 
             <a
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/eric7895/"
               target="_blank"
               rel="noreferrer"
             >
