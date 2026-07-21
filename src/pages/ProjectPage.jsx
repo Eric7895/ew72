@@ -134,7 +134,7 @@ function ProjectPage() {
       </main>
 
       <footer className="site-footer">
-        <p>© 2026 Your Name. Built with React and Vite.</p>
+        <p>© 2026 Eric Wu</p>
       </footer>
     </div>
   );

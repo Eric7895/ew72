@@ -9,6 +9,7 @@
 import cityPage from "../assets/projects/travel_squirrel/city_page_in_detail.png";
 import searchResult from "../assets/projects/travel_squirrel/search_result.png";
 import homePage from "../assets/projects/travel_squirrel/home_page.png";
+import dashboard from "../assets/projects/travel_squirrel/dashboard.png";
 
 const projects = [
   {
@@ -42,6 +43,14 @@ const projects = [
         alt: "TravelSquirrel city detail page showing location information and monthly weather statistics",
         caption:
           "Each destination includes city-level information and monthly statistics for temperature, precipitation, snowfall, and comfort score.",
+      },
+      {
+        id: "tableau-dashboard",
+        image: dashboard,
+        title: "Tableau Dashboard",
+        alt: "An interactive dashboard exploring regional weather trends",
+        caption:
+          "Allows users to explore total precipitation and snowfall by city and month, view monthly temperature trends, and compare the selected city with the hottest and coldest cities in the same country for the chosen month.",
       },
     ],
 
